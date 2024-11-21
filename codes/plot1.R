@@ -1,4 +1,4 @@
-dir.reset <- getwd()
+dir.reset <- getwd()  ; dir.reset
 setwd("./data")
 dir()
 
@@ -19,9 +19,11 @@ str(totalemission)
 totalemission
 
 png(filename = "outputs/plot1.png", width = 480, height = 480)
-barplot(totalemission, yaxt = "n", col = "red", ylim = c(0,9000000))
-title(main = "PM2.5 emission from all sources decreased in US", 
-      ylab = "Total amount of  PM2.5 Emissions from all sources (Tons)",
-      xlab = "Year of emissions recorded")
-text(totalemission+400000, labels = round(totalemission))
+plot(totalemission, xaxt = "n", 
+     col ="darkred", pch = 18,
+     xlab = "Years  of emission recorded",
+     ylab = "Total emission of PM2.5 in tons")
+lines(totalemission, col = "maroon")
+axis(1, at = c(1,2,3,4), labels = names(totalemission))
+title(main = "Total emission of PM2.5 from all sources in USA")
 dev.off()
